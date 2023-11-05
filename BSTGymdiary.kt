@@ -1,3 +1,4 @@
+// Clase para representar un usuario con correo y contraseña
 class Usuario(private val correo: String, private val contraseña: String) {
     fun getCorreo(): String {
         return correo
@@ -8,21 +9,23 @@ class Usuario(private val correo: String, private val contraseña: String) {
     }
 }
 
+// Clase para representar un nodo en un árbol binario
 class ArbolNodo<C : Comparable<C>, V>(val clave: C, var valor: V) {
     var izquierda: ArbolNodo<C, V>? = null
     var derecha: ArbolNodo<C, V>? = null
 }
 
-class ArbolBinario<C : Comparable<C>, V> {
+// Clase para representar un árbol binario
+class ArbolBinario<C : Comparable<C>, V> {  
     private var raiz: ArbolNodo<C, V>? = null
 
-    // Inserta un nuevo par clave-valor en el árbol binario
+    // Método para insertar un nuevo par clave-valor en el árbol binario
     fun insertar(clave: C, valor: V) {
         raiz = insertarRec(raiz, clave, valor)
     }
 
     // Función auxiliar para insertar un nodo de manera recursiva
-    private fun insertarRec(nodo: ArbolNodo<C, V>?, clave: C, valor: V): ArbolNodo<C, V> {
+    private fun insertarRec(nodo: ArbolNodo<C, V>?, clave: C, valor: V): ArbolNodo<C, V> { //la clave es el correo, el valor la contraseña
         // Si el árbol está vacío, crea un nuevo nodo
         if (nodo == null) {
             return ArbolNodo(clave, valor)
@@ -45,7 +48,6 @@ class ArbolBinario<C : Comparable<C>, V> {
         }
 
         return nodo
-
     }
 
     // Busca un usuario en el árbol binario a través del correo y contraseña
@@ -76,7 +78,7 @@ class ArbolBinario<C : Comparable<C>, V> {
         else {
             return buscarRec(nodo.derecha, correo, contraseña)
         }
-    } 
+    }
 
     private fun altura(nodo: ArbolNodo<C, V>?): Int {
         return nodo?.let {
@@ -156,7 +158,7 @@ class ArbolBinario<C : Comparable<C>, V> {
 
 fun main() {
     val arbol = ArbolBinario<String, String>()
-    
+
     // Registro de usuario
     println("Registro")
     println("Ingresa tu correo:")
