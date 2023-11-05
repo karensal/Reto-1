@@ -1,5 +1,6 @@
 // Clase para representar un usuario con correo y contraseña
-class Usuario(private val correo: String, private val contraseña: String) {
+class Usuario(private val correo: String, private val contraseña: String) { 
+    //getter de correo y contraseña
     fun getCorreo(): String {
         return correo
     }
